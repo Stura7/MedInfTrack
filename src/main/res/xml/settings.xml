@@ -31,5 +31,9 @@
         android:key="import"
         android:summary="@string/import_summary"
         android:title="@string/import_title"/>
+    <Preference
+        android:key="input"
+        android:summary="@string/input_summary"
+        android:title="@string/input_title"/>
 
 </PreferenceScreen>

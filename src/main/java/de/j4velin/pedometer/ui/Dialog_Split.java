@@ -45,10 +45,10 @@ abstract class Dialog_Split {
         float distance = (totalSteps - split_steps) * stepsize;
         if (prefs.getString("stepsize_unit", Fragment_Settings.DEFAULT_STEP_UNIT).equals("cm")) {
             distance /= 100000;
-            ((TextView) d.findViewById(R.id.distanceunit)).setText("km");
+            ((TextView) d.findViewById(R.id.distanceunit)).setText(R.string.kilometer_short);
         } else {
             distance /= 5280;
-            ((TextView) d.findViewById(R.id.distanceunit)).setText("mi");
+            ((TextView) d.findViewById(R.id.distanceunit)).setText(R.string.miles_short);
         }
         ((TextView) d.findViewById(R.id.distance))
                 .setText(Fragment_Overview.formatter.format(distance));

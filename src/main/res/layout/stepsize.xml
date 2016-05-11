@@ -26,13 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="cm" />
+            android:text="@string/centimeter_short" />
 
         <RadioButton
             android:id="@+id/ft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ft" />
+            android:text="@string/feet_short" />
     </RadioGroup>
 
 </LinearLayout>

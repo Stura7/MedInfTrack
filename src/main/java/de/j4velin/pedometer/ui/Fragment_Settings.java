@@ -71,6 +71,7 @@ public class Fragment_Settings extends PreferenceFragment implements OnPreferenc
         addPreferencesFromResource(R.xml.settings);
         findPreference("import").setOnPreferenceClickListener(this);
         findPreference("export").setOnPreferenceClickListener(this);
+        findPreference("input").setOnPreferenceClickListener(this);
 
         findPreference("notification")
                 .setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -157,6 +158,7 @@ public class Fragment_Settings extends PreferenceFragment implements OnPreferenc
         View v;
         final SharedPreferences prefs =
                 getActivity().getSharedPreferences("pedometer", Context.MODE_PRIVATE);
+
         switch (preference.getTitleRes()) {
             case R.string.goal:
                 builder = new AlertDialog.Builder(getActivity());
@@ -241,6 +243,10 @@ public class Fragment_Settings extends PreferenceFragment implements OnPreferenc
                             Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.string.input_title:
+                Toast.makeText(getActivity(), "Hier sollen die Input werde importiert oder definiert werden",
+                        Toast.LENGTH_SHORT).show();
+                break;
         }
         return false;
     }
@@ -258,7 +264,7 @@ public class Fragment_Settings extends PreferenceFragment implements OnPreferenc
      */
     private void exportCsv() {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            final File f = new File(Environment.getExternalStorageDirectory(), "Pedometer.csv");
+            final File f = new File(Environment.getExternalStorageDirectory(), "MedInfTrack.csv");
             if (f.exists()) {
                 new AlertDialog.Builder(getActivity()).setMessage(R.string.file_already_exists)
                         .setPositiveButton(android.R.string.ok, new OnClickListener() {

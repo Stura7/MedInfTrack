@@ -8,7 +8,7 @@ buildscript {
             classpath rootProject.ext.gradle_classpath
         } else {
             logger.warn('classpath not found in rootProject')
-            classpath 'com.android.tools.build:gradle:1.2.3'
+            classpath 'com.android.tools.build:gradle:2.1.0'
         }
     }
 }
@@ -16,29 +16,26 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-
     if (rootProject.ext.has("compileSdkVersion")) {
         compileSdkVersion rootProject.ext.compileSdkVersion
         buildToolsVersion rootProject.ext.buildToolsVersion
     } else {
         logger.warn('compileSdkVersion not found in rootProject')
         compileSdkVersion 23
-        buildToolsVersion "23.0.0 rc3"
+        buildToolsVersion "23.0.1"
     }
-
     defaultConfig {
         applicationId "de.j4velin.pedometer"
     }
-
     signingConfigs {
         release
+        config {
+        }
     }
-
     productFlavors {
         play
         fdroid
     }
-
     buildTypes {
         release {
             signingConfig signingConfigs.release
@@ -49,11 +46,12 @@ android {
         }
         debug {
             debuggable true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             zipAlignEnabled true
             minifyEnabled false
         }
     }
+    compileSdkVersion 23
 }
 
 repositories {
@@ -61,22 +59,24 @@ repositories {
 }
 
 dependencies {
+    //    playCompile 'com.google.android.gms:play-services-fitness:8.4.0'
+    //    playCompile 'com.google.android.gms:play-services-games:8.4.0'
+    //    playCompile 'com.google.android.gms:play-services-identity:8.4.0'
     compile 'com.github.j4velin.colorpicker:colorpicker:1.2.3'
     compile 'com.github.j4velin.EazeGraph:EazeGraph:1.0.2'
     compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'
-    playCompile 'com.google.android.gms:play-services-fitness:8.4.0'
-    playCompile 'com.google.android.gms:play-services-games:8.4.0'
-    playCompile 'com.google.android.gms:play-services-identity:8.4.0'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
 }
 
-def props = new Properties()
+//def props = new Properties()
 
-props.load(new FileInputStream(project.file("key.properties")))
+//props.load(new FileInputStream(project.file("key.properties")))
 
-android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
+//android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
 
-android.signingConfigs.release.storePassword props.keyStorePassword
+//android.signingConfigs.release.storePassword props.keyStorePassword
 
-android.signingConfigs.release.keyAlias props.keyAlias
+//android.signingConfigs.release.keyAlias props.keyAlias
 
-android.signingConfigs.release.keyPassword props.keyAliasPassword
+//android.signingConfigs.release.keyPassword props.keyAliasPassword
