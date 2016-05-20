@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="de.j4velin.pedometer"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    package="de.j4velin.pedometer"
     android:versionCode="143"
     android:versionName="1.4.3">
 
     <uses-sdk
         android:minSdkVersion="19"
-        android:targetSdkVersion="23"/>
+        android:targetSdkVersion="23" />
 
     <uses-feature
         android:name="android.hardware.sensor.stepcounter"
-        android:required="true"/>
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,37 +25,34 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar"
         tools:replace="label">
-
         <activity
             android:name=".ui.Activity_Main"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <receiver android:name=".BootReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <receiver android:name=".AppUpdatedReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".SensorListener"/>
+        <service android:name=".SensorListener" />
 
-        <receiver
-            android:name=".ShutdownRecevier">
+        <receiver android:name=".ShutdownRecevier">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
-                <action android:name="de.j4velin.ACTION_SHUTDOWN"/>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="de.j4velin.ACTION_SHUTDOWN" />
             </intent-filter>
         </receiver>
 
@@ -61,55 +60,62 @@
             android:name=".widget.DashClock"
             android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
             <intent-filter>
-                <action android:name="com.google.android.apps.dashclock.Extension"/>
+                <action android:name="com.google.android.apps.dashclock.Extension" />
             </intent-filter>
 
             <meta-data
                 android:name="protocolVersion"
-                android:value="2"/>
+                android:value="2" />
             <meta-data
                 android:name="worldReadable"
-                android:value="true"/>
+                android:value="true" />
             <meta-data
                 android:name="description"
-                android:value="Displays the steps taken today"/>
+                android:value="Displays the steps taken today" />
         </service>
 
         <activity
             android:name=".widget.WidgetConfig"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
         <receiver android:name=".widget.Widget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget"/>
+                android:resource="@xml/widget" />
         </receiver>
 
-        <service android:name=".widget.WidgetUpdateService"/>
+        <service android:name=".widget.WidgetUpdateService" />
 
-        <receiver
-            android:name=".util.TimeZoneListener">
+        <receiver android:name=".util.TimeZoneListener">
             <intent-filter>
-                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".PowerReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".ui.AdditionalData"
+            android:label="@string/title_activity_additional_data"
+            android:parentActivityName=".ui.Activity_Main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.j4velin.pedometer.ui.Activity_Main" />
+        </activity>
     </application>
 
 </manifest>
