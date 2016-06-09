@@ -116,6 +116,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.j4velin.pedometer.ui.Activity_Main" />
         </activity>
+
     </application>
 
 </manifest>

@@ -115,7 +115,7 @@ public class SensorListener extends Service implements SensorEventListener {
                 Database db = Database.getInstance(this);
                 db.updateSteps(Util.getToday(), -difference);
                 db.close();
-                prefs.edit().remove("pauseCount").commit();
+                prefs.edit().remove("pauseCount").apply();
                 updateNotificationState();
             } else { // pause counting
                 // cancel restart
@@ -123,7 +123,7 @@ public class SensorListener extends Service implements SensorEventListener {
                         .cancel(PendingIntent.getService(getApplicationContext(), 2,
                                 new Intent(this, SensorListener.class),
                                 PendingIntent.FLAG_UPDATE_CURRENT));
-                prefs.edit().putInt("pauseCount", steps).commit();
+                prefs.edit().putInt("pauseCount", steps).apply();
                 updateNotificationState();
                 stopSelf();
                 return START_NOT_STICKY;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MedInfTrack>
+    <medDataSet>
+		<Key>Gewicht</Key>
+		<unit>kg</unit>
+	</medDataSet>
+	<medDataSet>
+		<Key>Größe</Key>
+		<unit>cm</unit>
+	</medDataSet>
+	<medDataSet>
+		<Key>Ruhepuls</Key>
+		<unit>1/min</unit>
+	</medDataSet>
+	<medDataSet>
+		<Key>Sportpuls</Key>
+		<unit>1/min</unit>
+	</medDataSet>	
+	<medDataSet>
+		<Key>systolischer Blutdruck</Key>
+		<unit>mmHg</unit>
+	</medDataSet>	
+	<medDataSet>
+		<Key>diastolischer Blutdruck</Key>
+		<unit>mmHg</unit>
+	</medDataSet>		
+</MedInfTrack>

@@ -56,11 +56,13 @@ import de.j4velin.pedometer.PowerReceiver;
 import de.j4velin.pedometer.R;
 import de.j4velin.pedometer.SensorListener;
 import de.j4velin.pedometer.util.API23Wrapper;
+import de.j4velin.pedometer.util.Logger;
 import de.j4velin.pedometer.util.PlaySettingsWrapper;
+
 
 public class Fragment_Settings extends PreferenceFragment implements OnPreferenceClickListener {
 
-    final static int DEFAULT_GOAL = 10000;
+    final static int DEFAULT_GOAL = 7500;
     final static float DEFAULT_STEP_SIZE = Locale.getDefault() == Locale.US ? 2.5f : 75f;
     final static String DEFAULT_STEP_UNIT = Locale.getDefault() == Locale.US ? "ft" : "cm";
 
@@ -246,6 +248,14 @@ public class Fragment_Settings extends PreferenceFragment implements OnPreferenc
             case R.string.input_title:
                 Toast.makeText(getActivity(), "Hier sollen die Input werde importiert oder definiert werden",
                         Toast.LENGTH_SHORT).show();
+                try {
+                    Intent intent = new Intent (this.getActivity(), AdditionalData.class);
+                    startActivity(intent);
+                }
+                catch (Exception e) {
+                     Logger.log(e);
+                }
+
                 break;
         }
         return false;

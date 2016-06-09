@@ -125,6 +125,9 @@ public class Activity_Main extends FragmentActivity {
                         });
                 builder.create().show();
                 break;
+            case R.id.action_meddata:
+                Intent intent = new Intent (this, AdditionalData.class);
+                startActivity(intent);
         }
         return true;
     }

@@ -8,20 +8,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="Key"
         android:id="@+id/ad_list_item_textview" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ad_list_item_editText"
-        android:gravity="right" />
+        android:gravity="right"
+        android:width="75dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="Unit"
         android:id="@+id/ad_list_item_unit" />
 
 </LinearLayout>

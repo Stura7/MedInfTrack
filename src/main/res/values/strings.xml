@@ -76,4 +76,5 @@
     <string name="title_activity_additional_data__fregment__list">AdditionalData_Fregment_List
     </string>
     <string name="action_settings">Settings</string>
+    <string name="action_meddata">Medinische Daten</string>
 </resources>

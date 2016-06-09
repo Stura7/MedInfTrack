@@ -130,17 +130,11 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
             Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             if (sensor == null) {
                 new AlertDialog.Builder(getActivity()).setTitle(R.string.no_sensor)
-                        .setMessage(R.string.no_sensor_explain)
-                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                            @Override
-                            public void onDismiss(final DialogInterface dialogInterface) {
-                                getActivity().finish();
-                            }
-                        }).setNeutralButton(android.R.string.ok,
+                        .setMessage(R.string.no_sensor_explain).setNeutralButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(final DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
+                                //dialogInterface.dismiss();
                             }
                         }).create().show();
             } else {
